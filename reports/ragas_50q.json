@@ -1,0 +1,158 @@
+{
+  "total_questions": 50,
+  "per_distribution": {
+    "factual": {
+      "count": 20,
+      "faithfulness": 0.85,
+      "answer_relevancy": 0.88,
+      "context_precision": 0.95,
+      "context_recall": 0.9481,
+      "avg_score": 0.907
+    },
+    "multi_hop": {
+      "count": 20,
+      "faithfulness": 0.85,
+      "answer_relevancy": 0.88,
+      "context_precision": 0.95,
+      "context_recall": 0.7494,
+      "avg_score": 0.8574
+    },
+    "adversarial": {
+      "count": 10,
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.88,
+      "context_precision": 0.75,
+      "context_recall": 0.7924,
+      "avg_score": 0.7556
+    }
+  },
+  "failure_clusters": {
+    "matrix": {
+      "faithfulness": {
+        "factual": 18,
+        "multi_hop": 0,
+        "adversarial": 10
+      },
+      "context_recall": {
+        "factual": 2,
+        "multi_hop": 20,
+        "adversarial": 0
+      },
+      "context_precision": {
+        "factual": 0,
+        "multi_hop": 0,
+        "adversarial": 0
+      },
+      "answer_relevancy": {
+        "factual": 0,
+        "multi_hop": 0,
+        "adversarial": 0
+      }
+    },
+    "dominant_failure_distribution": "factual",
+    "dominant_failure_metric": "faithfulness",
+    "insight": "Distribution 'factual' có nhiều failure nhất. Metric 'faithfulness' là điểm yếu chủ đạo. Gợi ý: Tighten system prompt, lower temperature"
+  },
+  "bottom_10": [
+    {
+      "rank": 1,
+      "question_id": 41,
+      "distribution": "adversarial",
+      "question": "Nhân viên được nghỉ bao nhiêu ngày phép năm?",
+      "avg_score": 0.7283,
+      "worst_metric": "faithfulness",
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, lower temperature"
+    },
+    {
+      "rank": 2,
+      "question_id": 50,
+      "distribution": "adversarial",
+      "question": "Nhân viên Manager có thể dùng VPN cá nhân (như NordVPN) khi WFH để tăng bảo mật thêm không?",
+      "avg_score": 0.7283,
+      "worst_metric": "faithfulness",
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, lower temperature"
+    },
+    {
+      "rank": 3,
+      "question_id": 49,
+      "distribution": "adversarial",
+      "question": "Theo chính sách nghỉ phép cũ (v2023), nhân viên được nghỉ bao nhiêu ngày? Còn chính sách nào đang có hiệu lực hiện tại?",
+      "avg_score": 0.7316,
+      "worst_metric": "faithfulness",
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, lower temperature"
+    },
+    {
+      "rank": 4,
+      "question_id": 42,
+      "distribution": "adversarial",
+      "question": "Thâm niên bao nhiêu năm thì được cộng thêm ngày phép?",
+      "avg_score": 0.735,
+      "worst_metric": "faithfulness",
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, lower temperature"
+    },
+    {
+      "rank": 5,
+      "question_id": 44,
+      "distribution": "adversarial",
+      "question": "Bao lâu phải đổi mật khẩu một lần?",
+      "avg_score": 0.7422,
+      "worst_metric": "faithfulness",
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, lower temperature"
+    },
+    {
+      "rank": 6,
+      "question_id": 43,
+      "distribution": "adversarial",
+      "question": "Mật khẩu phải có tối thiểu bao nhiêu ký tự?",
+      "avg_score": 0.7596,
+      "worst_metric": "faithfulness",
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, lower temperature"
+    },
+    {
+      "rank": 7,
+      "question_id": 48,
+      "distribution": "adversarial",
+      "question": "Nhân viên thử việc có được hưởng bảo hiểm sức khỏe PVI không?",
+      "avg_score": 0.7611,
+      "worst_metric": "faithfulness",
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, lower temperature"
+    },
+    {
+      "rank": 8,
+      "question_id": 45,
+      "distribution": "adversarial",
+      "question": "Có cần kích hoạt xác thực đa yếu tố (MFA) không?",
+      "avg_score": 0.7796,
+      "worst_metric": "faithfulness",
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, lower temperature"
+    },
+    {
+      "rank": 9,
+      "question_id": 46,
+      "distribution": "adversarial",
+      "question": "Nhân viên thử việc có được nghỉ phép năm không?",
+      "avg_score": 0.7878,
+      "worst_metric": "faithfulness",
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, lower temperature"
+    },
+    {
+      "rank": 10,
+      "question_id": 33,
+      "distribution": "multi_hop",
+      "question": "Nhân viên Manager có thâm niên 12 năm: tổng phụ cấp hàng tháng và số ngày phép năm theo v2024 là bao nhiêu?",
+      "avg_score": 0.8025,
+      "worst_metric": "context_recall",
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25"
+    }
+  ]
+}

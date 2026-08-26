@@ -16,6 +16,13 @@ import os
 import sys
 import time
 
+if sys.stdout.encoding != "utf-8":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -74,7 +81,11 @@ def build_pipeline():
     return search, reranker, RERANK_TOP_K
 
 
+_OPENAI_DISABLED = False
+
+
 def run_query(q: str, search, reranker, top_k: int) -> tuple[str, list[str]]:
+    global _OPENAI_DISABLED
     from config import OPENAI_API_KEY
 
     results = search.search(q)
@@ -82,7 +93,7 @@ def run_query(q: str, search, reranker, top_k: int) -> tuple[str, list[str]]:
     reranked = reranker.rerank(q, docs, top_k=top_k)
     contexts = [r.text for r in reranked] if reranked else [r.text for r in results[:3]]
 
-    if OPENAI_API_KEY and contexts:
+    if OPENAI_API_KEY and contexts and not _OPENAI_DISABLED:
         try:
             from openai import OpenAI
             client = OpenAI()
@@ -96,7 +107,8 @@ def run_query(q: str, search, reranker, top_k: int) -> tuple[str, list[str]]:
             )
             return resp.choices[0].message.content, contexts
         except Exception as e:
-            print(f"  ⚠️  LLM generation failed: {e}")
+            _OPENAI_DISABLED = True
+            print(f"  ⚠️  LLM generation failed (disabling further calls): {e}")
 
     return (contexts[0] if contexts else "Không tìm thấy thông tin."), contexts
 
