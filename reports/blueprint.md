@@ -1,6 +1,6 @@
 # CI/CD Blueprint: RAG Eval + Guardrail Stack
 
-**Sinh viên:** Ngô Đình Khánh (2A202601625)  
+**Sinh viên:** Nguyễn Hữu Tuyền (2A202601605)  
 **Ngày:** 26/08/2026
 
 ---

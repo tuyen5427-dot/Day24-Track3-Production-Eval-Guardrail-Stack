@@ -1,6 +1,6 @@
 # Failure Cluster Analysis — Phase A
 
-**Sinh viên:** Ngô Đình Khánh (2A202601625)  
+**Sinh viên:** Nguyễn Hữu Tuyền (2A202601605)  
 **Ngày:** 26/08/2026
 
 ---
